@@ -1,0 +1,38 @@
+/* pages/service.wxss */
+.section .picker
+{
+  margin: 20rpx 0;
+  background: rgba(0,0,0,0.2);
+  text-align: center;
+}
+.game_title{
+  background: rgba(0,0,0,0.2);
+  margin: 30rpx 0;
+  text-align: center;
+}
+.game_row_item{
+  display: flex;
+  flex-flow: row;
+  border: 1rpx solid #eee;
+  padding: 0 20rpx 0 20rpx ;
+}
+.game_row_item .game_row_name{
+  font-size: 30rpx;
+  padding-bottom: 30rpx;
+}
+.button{
+  top: -40rpx;
+  position: relative;
+  margin-top: 80rpx;
+}
+.name_input{
+  width: 100%;
+  min-height: 150rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,0.2);
+}
+.client_name button{
+  margin-top: 50rpx;
+}

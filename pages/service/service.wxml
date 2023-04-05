@@ -1,0 +1,38 @@
+<view class="section">
+  <picker bindchange="bindPickerChange" value="{{index}}" range="{{sizeInfo}}" range-key="des">
+    <view class="picker">
+      当前选择：{{sizeInfo[currentSelectSizeIdx].des}}
+    </view>
+  </picker>
+</view>
+<view class="page_game_list">
+      <view class="game_title">游戏清单</view>
+      <view>
+        <view class="game_row_item" wx:for="{{ csvData }}" wx:key="id">
+          <checkbox checked="{{ item.check }}" bindtap="onClickGameItem" data-id="{{ item.id }}" />
+          <view class="game_row_name">{{item.name}}</view>
+        </view>
+      </view>
+</view>
+<view class="button">
+  <button bindtap="onClickFinish">完成</button>
+</view>
+<page-container 
+  show="{{showPage}}"
+  round="true"
+  overlay="true"
+  position="bottom"
+  close-on-slide-down="false"
+  custom-style="height: 30%"
+  overlay-style="background-color: rgba(0, 0, 0, 0.7)"
+  bindclickoverlay="onClosePage"
+>
+  <view class="client_name">
+    <input class="name_input" 
+      placeholder="输入昵称" 
+      maxlength="20"
+      bindblur="onBindBlur"
+    />
+    <button bindtap="onClickSend">提交</button>
+  </view>
+</page-container>
