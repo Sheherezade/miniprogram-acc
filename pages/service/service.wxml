@@ -4,6 +4,7 @@
       当前选择：{{sizeInfo[currentSelectSizeIdx].des}}
     </view>
   </picker>
+  <view>剩余可用容量:{{(remainSize)}}GB</view>
 </view>
 <view class="page_game_list">
       <view class="game_title">游戏清单</view>

@@ -7,12 +7,13 @@ Page({
    */
   data: {
     sizeInfo:[
-      { value: 1, des:'64g内存卡' },
-      { value: 128, des:'128g内存卡' },
-      { value: 256, des:'256g内存卡' }
+      { value: 47, des:'64g内存卡' },
+      { value: 106, des:'128g内存卡' }
     ],
     currentSelectSizeIdx: 0,
     currentSelectSize: 0,
+    currentTotalSize:0,
+    remainSize:0,
     csvData: [],
     id2sizeMap: {},
     clientName: "",
@@ -41,6 +42,7 @@ Page({
         currentSelectSize: this.data.sizeInfo[idx].value
       })
     }
+    this.calcuRemainSize();
   },
 
   // 选择内存卡容量事件
@@ -129,28 +131,16 @@ Page({
     const { name, selectGameIds } = this.data;
     if(selectGameIds.length == 0)
     {
-      wx.showToast({
-        title: '请选择至少一个游戏',
-        icon: 'none',
-        duration: 2000
-      })
+      this.showToast('请选择至少一个游戏')
       return;
     }
     if(name.length === 0)
     {
-      wx.showToast({
-        title: '请输入您的名字',
-        icon: 'none',
-        duration: 2000
-      })
+      this.showToast('请输入您的名字');
       return;
     }
     if(isSend){
-      wx.showToast({
-        title: '请不要频繁发送',
-        icon: 'none',
-        duration: 2000
-      })
+      this.showToast('请不要频繁发送');
       return;
     }
     isSend = true;
@@ -165,7 +155,7 @@ Page({
       }
     })
     .then(res => {
-      console.log(res)
+      this.showToast('上传成功!');
     })
 
     //函数节流
@@ -191,19 +181,21 @@ Page({
       selectGameIds
     })
     this.calcuSize();
+    this.calcuRemainSize();
   },
 
   // 计算占用容量
   calcuSize(){
-    let totalSize = 0;
+    let currentTotalSize = 0;
     const { id2sizeMap,selectGameIds,currentSelectSize } = this.data;
     selectGameIds.forEach(function(id){
       if(id in id2sizeMap)
       {
-        totalSize += parseFloat(id2sizeMap[id]);
+        currentTotalSize += parseFloat(id2sizeMap[id]);
       }
     });
-    if(totalSize >= currentSelectSize * 1024)
+    this.setData({ currentTotalSize });
+    if(currentTotalSize >= currentSelectSize * 1024)
     {
       wx.showToast({
         title: '游戏容量超出内存卡上限!',
@@ -214,6 +206,26 @@ Page({
       return false;
     }
     return true;
+  },
+
+  calcuRemainSize(){
+    let {currentTotalSize, currentSelectSize} = this.data;
+    let remain = (currentSelectSize * 1024 - currentTotalSize)/1024;
+    if(remain < 0)
+    {
+      remain = 0;
+    }
+    this.setData({
+      remainSize: remain.toFixed(2)
+    });
+  },
+
+  showToast(info){
+    wx.showToast({
+      title: info,
+      icon: 'none',
+      duration: 2000
+    })
   },
   /**
    * 生命周期函数--监听页面加载

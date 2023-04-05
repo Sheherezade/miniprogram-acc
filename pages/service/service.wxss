@@ -5,6 +5,19 @@
   background: rgba(0,0,0,0.2);
   text-align: center;
 }
+.section{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 150rpx;
+  z-index: 2;
+  background-color: #fff;
+}
+.page_game_list{
+  position: relative;
+  margin-top: 150rpx;
+}
 .game_title{
   background: rgba(0,0,0,0.2);
   margin: 30rpx 0;
