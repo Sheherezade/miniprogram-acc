@@ -1,0 +1,9 @@
+<!--pages/order/order.wxml-->
+<view>
+  <scroll-view scroll-y="true" class="listScroll">
+  <view class="order_item" wx:for="{{ order_list }}" wx:key="id">
+    <text	user-select="true" class="order_user_name">{{item.name}}</text>
+    <text user-select="true" class="order_game_list">{{item.game_list}}</text>
+  </view>
+  </scroll-view>
+</view>

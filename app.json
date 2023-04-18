@@ -1,31 +1,36 @@
 {
-    "pages": [
-      "pages/service/service",
-      "pages/index/index"
-
-    ],
-    "window": {
-        "backgroundTextStyle": "light",
-        "navigationBarBackgroundColor": "#fff",
-        "navigationBarTitleText": "漓墨白的未白镇",
-        "navigationBarTextStyle": "black"
-    },
-    "tabBar": {
-      "color": "#333",
-      "selectedColor": "#d43c33",
-      "backgroundColor": "#ffffff",
-      "position": "top",
-      "list": [
-        {
-          "pagePath": "pages/index/index",
-          "text": "主页"
-        },
-        {
-          "pagePath": "pages/service/service",
-          "text": "服务"
-        }
-      ]
-    },
-    "style": "v2",
-    "sitemapLocation": "sitemap.json"
+  "pages": [
+    "pages/service/service",
+    "pages/index/index",
+    "pages/setting/setting",
+    "pages/order/order"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "漓墨白的未白镇",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#333",
+    "selectedColor": "#d43c33",
+    "backgroundColor": "#ffffff",
+    "position": "top",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "主页"
+      },
+      {
+        "pagePath": "pages/service/service",
+        "text": "服务"
+      },
+      {
+        "pagePath": "pages/setting/setting",
+        "text": "设置"
+      }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
 }

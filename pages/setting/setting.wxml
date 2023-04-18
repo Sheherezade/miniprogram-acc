@@ -1,0 +1,13 @@
+<!--pages/setting.wxml-->
+<!-- 歌曲 -->
+<view class="ListContainer">
+  <scroll-view scroll-y="true" class="listScroll">
+      <view class="tab" bindtap="onClickClearCache">
+        <text>清理缓存</text>
+      </view>
+      <view class="tab" bindtap="onClickShowOrder">
+        <text>浏览订单</text>
+      </view>
+    </scroll-view>
+</view>
+

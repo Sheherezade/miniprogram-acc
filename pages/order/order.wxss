@@ -1,0 +1,12 @@
+.order_item{
+  display: flex;
+  flex-flow: column;
+  border: 1rpx solid #eee;
+  padding: 0 20rpx 50rpx 20rpx ;
+}
+.order_user_name{
+  word-break: break-all;
+}
+.order_game_list{
+  word-break: break-all;
+}

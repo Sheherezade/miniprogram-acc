@@ -1,4 +1,4 @@
-// pages/service.js
+import PubSub from 'pubsub-js';
 let isSend = false;//函数节流使用
 Page({
 
@@ -155,7 +155,10 @@ Page({
       }
     })
     .then(res => {
-      this.showToast('上传成功!');
+      wx.showModal({
+        content: '上传成功',
+        showCancel: false
+        });
     })
 
     //函数节流
@@ -231,6 +234,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
+    console.log("到服务页面了");
     // 从本地读取 csv 数据
     wx.getStorage({
       key: 'csvData',
