@@ -26,18 +26,7 @@
         "iconPath":"/static/images/tabs/home.png",
         "selectedIconPath":"/static/images/tabs/home_active.png"
       },
-      {
-        "pagePath": "pages/classify/classify",
-        "text": "分类",
-        "iconPath":"/static/images/tabs/classify.png",
-        "selectedIconPath":"/static/images/tabs/classify_active.png"
-      },
-      {
-        "pagePath": "pages/cart/cart",
-        "text": "游戏筐",
-        "iconPath":"/static/images/tabs/cart.png",
-        "selectedIconPath":"/static/images/tabs/cart_active.png"
-      },
+      
       {
         "pagePath": "pages/setting/setting",
         "text": "我的",

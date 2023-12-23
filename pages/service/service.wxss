@@ -2,26 +2,30 @@
 .section .picker
 {
   margin: 20rpx 0;
-  background: rgba(0,0,0,0.2);
+  background: #3DACF7;
   text-align: center;
+  color:#fff;
+  font-size: 26rpx;
 }
 .section{
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  height: 150rpx;
+  height: 180rpx;
   z-index: 2;
   background-color: #fff;
 }
 .page_game_list{
   position: relative;
-  margin-top: 150rpx;
+  margin-top: 180rpx;
 }
 .game_title{
-  background: rgba(0,0,0,0.2);
+  background: #3DACF7;
   margin: 30rpx 0;
   text-align: center;
+  color:#fff;
+  font-size: 26rpx;
 }
 .game_row_item{
   display: flex;
@@ -46,6 +50,17 @@
   justify-content: center;
   background: rgba(0,0,0,0.2);
 }
+.btn_finish{
+  background: #3DACF7;
+  color:#fff;
+  font-size: 26rpx;
+}
+.btn_commit{
+  background: #3DACF7;
+  color:#fff;
+  font-size: 26rpx;
+}
 .client_name button{
   margin-top: 50rpx;
+  background: #3DACF7;
 }

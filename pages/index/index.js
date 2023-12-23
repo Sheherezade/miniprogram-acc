@@ -20,4 +20,16 @@ Page({
       url: '/pages/service/service',
     });
   },
+
+  onClickLock(){
+    this.showToast('暂未开放');
+  },
+
+  showToast(info){
+    wx.showToast({
+      title: info,
+      icon: 'none',
+      duration: 2000
+    })
+  },
 })

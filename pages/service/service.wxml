@@ -2,9 +2,12 @@
   <picker bindchange="bindPickerChange" value="{{index}}" range="{{sizeInfo}}" range-key="des">
     <view class="picker">
       当前选择：{{sizeInfo[currentSelectSizeIdx].des}}
+    
+      <text style="font-size: 18rpx ; color: #000000">(切换)</text>
     </view>
   </picker>
-  <view>剩余可用容量:{{(remainSize)}}GB</view>
+  <view>剩余可用容量:{{ remainSize }}GB,已选择{{ selectGameCount }}个</view>
+  <text style="font-size: 20rpx; color: #3DACF7">(已预留10g空间用于安装游戏及基础工具文件)</text>
 </view>
 <view class="page_game_list">
       <view class="game_title">游戏清单</view>
@@ -16,7 +19,7 @@
       </view>
 </view>
 <view class="button">
-  <button bindtap="onClickFinish">完成</button>
+  <button class="btn_finish" bindtap="onClickFinish">完成</button>
 </view>
 <page-container 
   show="{{showPage}}"
@@ -24,16 +27,16 @@
   overlay="true"
   position="bottom"
   close-on-slide-down="false"
-  custom-style="height: 30%"
+  custom-style="height: 25%"
   overlay-style="background-color: rgba(0, 0, 0, 0.7)"
   bindclickoverlay="onClosePage"
 >
   <view class="client_name">
     <input class="name_input" 
-      placeholder="输入昵称" 
+      placeholder="(下单平台昵称)" 
       maxlength="20"
       bindblur="onBindBlur"
-    />
-    <button bindtap="onClickSend">提交</button>
+      style="text-align: center;" />
+    <button class="btn_commit" bindtap="onClickSend">提交</button>
   </view>
 </page-container>

@@ -14,6 +14,7 @@ Page({
     currentSelectSize: 0,
     currentTotalSize:0,
     remainSize:0,
+    selectGameCount:0,
     csvData: [],
     id2sizeMap: {},
     clientName: "",
@@ -171,17 +172,20 @@ Page({
   // 选择一个游戏事件
   onClickGameItem(e){
     let { id } = e.currentTarget.dataset;//这里可以知道被改变的复选框的index
-    let { selectGameIds } = this.data;
+    let { selectGameIds,selectGameCount } = this.data;
     if(selectGameIds.includes(id))
     {
       const idx = selectGameIds.indexOf(id);
       selectGameIds.splice(idx, 1);
+      selectGameCount--;
     }
     else{
       selectGameIds.push(id);
+      selectGameCount++;
     }
     this.setData({
-      selectGameIds
+      selectGameIds,
+      selectGameCount
     })
     this.calcuSize();
     this.calcuRemainSize();

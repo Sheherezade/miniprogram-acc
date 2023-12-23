@@ -14,25 +14,25 @@
     </view>
     <view class="navItem">
       <view class="tabContainer">
-        <text class="acc acc-zaixianjiaocheng" style="width: 60rpx; height: 60rpx"></text>
+        <text class="acc acc-zaixianjiaocheng" style="width: 60rpx; height: 60rpx" bind:tap="onClickLock"></text>
       </view>
       <text>教程指引</text>
     </view>
     <view class="navItem">
       <view class="tabContainer">
-        <text class="acc acc-shoudiantong"></text>
+        <text class="acc acc-shoudiantong" bind:tap="onClickLock"></text>
       </view>
       <text>配件查询</text>
     </view>
     <view class="navItem">
       <view class="tabContainer">
-        <text class="acc acc-Trash"></text>
+        <text class="acc acc-Trash" bind:tap="onClickLock"></text>
       </view>
       <text>掌机回收</text>
     </view>
     <view class="navItem">
       <view class="tabContainer">
-        <text class="acc acc-youxiang"></text>
+        <text class="acc acc-youxiang" bind:tap="onClickLock"></text>
       </view>
       <text>联系我们</text>
     </view>
