@@ -3,20 +3,21 @@ Page({
   data: {
     bannerList:[
       {
-        pic: '/static/images/course/course_1.jpg'
+        pic: 'cloud://cloud1-2gajjosv8b2840db.636c-cloud1-2gajjosv8b2840db-1317345751/images/course_1.jpg'
       },
       {
-        pic: '/static/images/course/course_2.jpg'
+        pic: 'cloud://cloud1-2gajjosv8b2840db.636c-cloud1-2gajjosv8b2840db-1317345751/images/course_2.jpg'
       },
       {
-        pic: '/static/images/course/course_3.jpg'
-      },
-      {
-        pic: '/static/images/course/course_4.jpg'
-      },
-      {
-        pic: '/static/images/course/course_5.jpg'
+        pic: 'cloud://cloud1-2gajjosv8b2840db.636c-cloud1-2gajjosv8b2840db-1317345751/images/course_3.jpg'
       }
     ],//轮播图数据
+  },
+
+  onClickGameSelect()
+  {
+    wx.navigateTo({
+      url: '/pages/service/service',
+    });
   },
 })

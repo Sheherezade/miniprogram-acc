@@ -1,36 +1,52 @@
 {
+  "entryPagePath": "pages/index/index",
   "pages": [
     "pages/service/service",
     "pages/index/index",
     "pages/setting/setting",
-    "pages/order/order"
+    "pages/order/order",
+    "pages/cart/cart",
+    "pages/classify/classify"
   ],
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#fff",
+    "navigationBarBackgroundColor": "#3DACF7",
     "navigationBarTitleText": "漓墨白的未白镇",
-    "navigationBarTextStyle": "black"
+    "navigationBarTextStyle": "white"
   },
   "tabBar": {
     "color": "#333",
-    "selectedColor": "#d43c33",
+    "selectedColor": "#3DACF7",
     "backgroundColor": "#ffffff",
-    "position": "top",
+    "position": "bottom",
     "list": [
       {
         "pagePath": "pages/index/index",
-        "text": "主页"
+        "text": "主页",
+        "iconPath":"/static/images/tabs/home.png",
+        "selectedIconPath":"/static/images/tabs/home_active.png"
       },
       {
-        "pagePath": "pages/service/service",
-        "text": "服务"
+        "pagePath": "pages/classify/classify",
+        "text": "分类",
+        "iconPath":"/static/images/tabs/classify.png",
+        "selectedIconPath":"/static/images/tabs/classify_active.png"
+      },
+      {
+        "pagePath": "pages/cart/cart",
+        "text": "游戏筐",
+        "iconPath":"/static/images/tabs/cart.png",
+        "selectedIconPath":"/static/images/tabs/cart_active.png"
       },
       {
         "pagePath": "pages/setting/setting",
-        "text": "设置"
+        "text": "我的",
+        "iconPath":"/static/images/tabs/self.png",
+        "selectedIconPath":"/static/images/tabs/self_active.png"
       }
     ]
   },
   "style": "v2",
-  "sitemapLocation": "sitemap.json"
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents"
 }

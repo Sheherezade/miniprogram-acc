@@ -3,4 +3,43 @@
     <swiper-item  wx:for="{{bannerList}}" wx:key="bannerId">
       <image src="{{item.pic}}"></image>
     </swiper-item>
-</swiper>
+  </swiper>
+<!-- 导航 -->
+<view class="navContainer">
+    <view class="navItem">
+      <view class="tabContainer">
+        <text class="acc acc-youxiji" bindtap="onClickGameSelect"></text>
+      </view>
+      <text>游戏选择</text>
+    </view>
+    <view class="navItem">
+      <view class="tabContainer">
+        <text class="acc acc-zaixianjiaocheng" style="width: 60rpx; height: 60rpx"></text>
+      </view>
+      <text>教程指引</text>
+    </view>
+    <view class="navItem">
+      <view class="tabContainer">
+        <text class="acc acc-shoudiantong"></text>
+      </view>
+      <text>配件查询</text>
+    </view>
+    <view class="navItem">
+      <view class="tabContainer">
+        <text class="acc acc-Trash"></text>
+      </view>
+      <text>掌机回收</text>
+    </view>
+    <view class="navItem">
+      <view class="tabContainer">
+        <text class="acc acc-youxiang"></text>
+      </view>
+      <text>联系我们</text>
+    </view>
+    <view class="navItem">
+      <view class="tabContainer">
+        <text class="acc"></text>
+      </view>
+      <text>敬请期待</text>
+    </view>
+  </view>
