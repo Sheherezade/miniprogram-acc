@@ -40,3 +40,4 @@
     <button class="btn_commit" bindtap="onClickSend">提交</button>
   </view>
 </page-container>
+<acc-footer/>

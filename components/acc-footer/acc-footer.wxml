@@ -1,0 +1,6 @@
+<!--components/acc-footer/acc-footer.wxml-->
+<view class="kefu">
+  <button class="btn" open-type="contact">1</button>
+  <image src="/static/images/kefu.png" mode="aspectFill" class="pic"/>
+  <view class="line"></view>
+</view>

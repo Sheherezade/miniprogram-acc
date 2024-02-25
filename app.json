@@ -6,7 +6,8 @@
     "pages/setting/setting",
     "pages/order/order",
     "pages/cart/cart",
-    "pages/classify/classify"
+    "pages/classify/classify",
+    "pages/log/log"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -23,19 +24,21 @@
       {
         "pagePath": "pages/index/index",
         "text": "主页",
-        "iconPath":"/static/images/tabs/home.png",
-        "selectedIconPath":"/static/images/tabs/home_active.png"
+        "iconPath": "/static/images/tabs/home.png",
+        "selectedIconPath": "/static/images/tabs/home_active.png"
       },
-      
       {
         "pagePath": "pages/setting/setting",
         "text": "我的",
-        "iconPath":"/static/images/tabs/self.png",
-        "selectedIconPath":"/static/images/tabs/self_active.png"
+        "iconPath": "/static/images/tabs/self.png",
+        "selectedIconPath": "/static/images/tabs/self_active.png"
       }
     ]
   },
   "style": "v2",
   "sitemapLocation": "sitemap.json",
-  "lazyCodeLoading": "requiredComponents"
+  "lazyCodeLoading": "requiredComponents",
+  "usingComponents": {
+    "acc-footer":"components/acc-footer/acc-footer"
+  }
 }

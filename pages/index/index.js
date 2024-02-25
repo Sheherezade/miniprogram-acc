@@ -21,6 +21,14 @@ Page({
     });
   },
 
+
+  onClickLog()
+  {
+    wx.navigateTo({
+      url: '/pages/log/log',
+    });
+  },
+
   onClickLock(){
     this.showToast('暂未开放');
   },
@@ -32,4 +40,20 @@ Page({
       duration: 2000
     })
   },
+
+   /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage(e) {    
+    return {
+      title:"漓墨白的未白镇"
+    }
+  },
+
+  // 分享到朋友圈
+  onShareTimeline(){
+    return {
+      title:"漓墨白的未白镇"
+    }
+  }
 })

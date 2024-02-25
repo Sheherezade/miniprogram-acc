@@ -10,4 +10,5 @@
       </view>
     </scroll-view>
 </view>
+<acc-footer/>
 

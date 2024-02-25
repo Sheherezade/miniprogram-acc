@@ -1,5 +1,4 @@
-import PubSub from 'pubsub-js';
-// pages/setting.js
+// pages/log/log.js
 Page({
 
   /**
@@ -7,26 +6,6 @@ Page({
    */
   data: {
 
-  },
-
-  onClickClearCache(){
-    wx.showModal({
-      content: '确认清空记录吗?',
-      success: (res)=>{
-        if(res.confirm){
-          wx.removeStorageSync('csvData');
-          wx.reLaunch({
-            url: '/pages/service/service',
-          });
-        }
-      }
-    })
-  },
-
-  onClickShowOrder(){
-    wx.navigateTo({
-      url: '/pages/order/order'
-    });
   },
 
   /**

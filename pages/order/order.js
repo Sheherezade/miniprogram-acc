@@ -1,3 +1,4 @@
+import {formatNum,formatTime} from "../../utils/common.js"
 // pages/order/order.js
 Page({
 
@@ -5,7 +6,12 @@ Page({
    * 页面的初始数据
    */
   data: {
-    order_list:[]
+    order_list:[],
+    size_info:[
+      '64g内存卡',
+      '128g内存卡',
+      '256g内存卡'
+    ],
   },
 
   /**
@@ -29,6 +35,9 @@ Page({
           console.log(res.result)
         }
         else{
+          res.result.data.forEach(item=>{
+            item.time=formatTime(item.time,3)
+          })
           this.setData({
             order_list: res.result.data
           })
@@ -78,11 +87,4 @@ Page({
   onReachBottom() {
 
   },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage() {
-
-  }
 })

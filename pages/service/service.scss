@@ -1,0 +1,66 @@
+/* pages/service.wxss */
+.section .picker
+{
+  margin: 20rpx 0;
+  background: #3DACF7;
+  text-align: center;
+  color:#fff;
+  font-size: 26rpx;
+}
+.section{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 180rpx;
+  z-index: 2;
+  background-color: #fff;
+}
+.page_game_list{
+  position: relative;
+  margin-top: 180rpx;
+}
+.game_title{
+  background: #3DACF7;
+  margin: 30rpx 0;
+  text-align: center;
+  color:#fff;
+  font-size: 26rpx;
+}
+.game_row_item{
+  display: flex;
+  flex-flow: row;
+  border: 1rpx solid #eee;
+  padding: 0 20rpx 0 20rpx ;
+}
+.game_row_item .game_row_name{
+  font-size: 30rpx;
+  padding-bottom: 30rpx;
+}
+.button{
+  top: -40rpx;
+  position: relative;
+  margin-top: 80rpx;
+}
+.name_input{
+  width: 100%;
+  min-height: 150rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,0.2);
+}
+.btn_finish{
+  background: #3DACF7;
+  color:#fff;
+  font-size: 26rpx;
+}
+.btn_commit{
+  background: #3DACF7;
+  color:#fff;
+  font-size: 26rpx;
+}
+.client_name button{
+  margin-top: 50rpx;
+  background: #3DACF7;
+}

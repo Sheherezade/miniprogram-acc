@@ -14,15 +14,15 @@
     </view>
     <view class="navItem">
       <view class="tabContainer">
-        <text class="acc acc-zaixianjiaocheng" style="width: 60rpx; height: 60rpx" bind:tap="onClickLock"></text>
+        <text class="acc acc-shoudiantong" bind:tap="onClickLog"></text>
       </view>
-      <text>教程指引</text>
+      <text>更新日志</text>
     </view>
     <view class="navItem">
       <view class="tabContainer">
-        <text class="acc acc-shoudiantong" bind:tap="onClickLock"></text>
+        <text class="acc acc-zaixianjiaocheng" style="width: 60rpx; height: 60rpx" bind:tap="onClickLock"></text>
       </view>
-      <text>配件查询</text>
+      <text>教程指引</text>
     </view>
     <view class="navItem">
       <view class="tabContainer">
@@ -43,3 +43,4 @@
       <text>敬请期待</text>
     </view>
   </view>
+  <acc-footer/>

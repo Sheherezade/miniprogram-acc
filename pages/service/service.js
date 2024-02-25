@@ -8,7 +8,8 @@ Page({
   data: {
     sizeInfo:[
       { value: 47, des:'64g内存卡' },
-      { value: 106, des:'128g内存卡' }
+      { value: 106, des:'128g内存卡' },
+      { value: 220, des:'256g(包含该目录所有已汉化游戏)'}
     ],
     currentSelectSizeIdx: 0,
     currentSelectSize: 0,
@@ -47,7 +48,7 @@ Page({
   },
 
   // 选择内存卡容量事件
-  bindPickerChange: function(e) {
+  bindPickerChange(e) {
     this.setData({
       currentSelectSizeIdx: e.detail.value
     })
@@ -147,12 +148,15 @@ Page({
     isSend = true;
 
     // 入库
+    var time = new Date().getTime();
     const db = wx.cloud.database()
     db.collection('user_game_list').add({
       // data 字段表示需新增的 JSON 数据
       data: {
         name,
-        game_list : selectGameIds.join(',')
+        game_list : selectGameIds.join(','),
+        time,
+        size: this.data.currentSelectSizeIdx
       }
     })
     .then(res => {
@@ -301,11 +305,20 @@ Page({
 
   },
 
-  /**
+   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage() {
+  onShareAppMessage(e) {    
+    return {
+      title:"漓墨白的未白镇"
+    }
+  },
 
+  // 分享到朋友圈
+  onShareTimeline(){
+    return {
+      title:"漓墨白的未白镇"
+    }
   }
 })
 

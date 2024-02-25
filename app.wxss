@@ -1,6 +1,19 @@
 /**app.wxss**/
 @import '/static/font/iconfont.wxss';
 
+page {
+  --themeColor: #3DACF7;
+  --globalColor: #1a1b1c;
+  --focusColor: #4c4d4e;
+  --descColor: #9DACF7;
+  --greyColor:#8e8e8e;
+  --subColor: #b1b2b3;
+  --lightColor:#e4e4e4;
+  --globalBgColor1: #e3e4e5;
+  --globalBgColor2: #f6f7f8;
+  --globalBgColor3: #ffffff;
+}
+
 .container {
   height: 100%;
   display: flex;
