@@ -413,7 +413,7 @@ Page({
         console.log('服务器版本',res.result.content)
         console.log('本地版本',local_version)
         // 远端版本更新 直接下载
-        if(res.result.content > local_version)
+        if(local_version == undefined ||res.result.content > local_version)
         {
           console.log('远端版本更新，开始下载')
           this.startDownload();
