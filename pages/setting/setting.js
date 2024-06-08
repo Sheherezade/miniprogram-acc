@@ -33,27 +33,30 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-    wx.getStorage({
-      key: 'version',
-      success: res => {
-        this.setData({
-          version: res.data
-        })}
-    });
+    
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady() {
-
+    
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow() {
-
+    wx.getStorage({
+      key: 'version',
+      success: res => {
+        console.log(res.data)
+        this.setData({version: res.data});
+      },
+      fail: err => {
+        console.error('版本存储失败', err);
+      }
+    });
   },
 
   /**
