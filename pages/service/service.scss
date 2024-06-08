@@ -38,9 +38,9 @@
   padding-bottom: 30rpx;
 }
 .button{
-  top: -40rpx;
+  top: -30rpx;
   position: relative;
-  margin-top: 80rpx;
+  margin-top: 50rpx;
 }
 .name_input{
   width: 100%;
@@ -50,11 +50,6 @@
   justify-content: center;
   background: rgba(0,0,0,0.2);
 }
-.btn_finish{
-  background: #3DACF7;
-  color:#fff;
-  font-size: 26rpx;
-}
 .btn_commit{
   background: #3DACF7;
   color:#fff;
@@ -63,4 +58,53 @@
 .client_name button{
   margin-top: 50rpx;
   background: #3DACF7;
+}
+/* 未选中的背景样式 */
+checkbox .wx-checkbox-input{
+  width: 40rpx; 
+  height: 40rpx; 
+  border-radius: 50%;
+}
+
+/* 选中后的背景样式 */
+checkbox .wx-checkbox-input.wx-checkbox-input-checked{
+  border: none;
+  background: var(--highlightColor);
+}
+/* 选中后的勾子样式 */
+checkbox .wx-checkbox-input.wx-checkbox-input-checked::before{
+  width: 40rpx;
+  height: 40rpx;
+  line-height: 40rpx;
+  border-radius: 50%;
+  text-align: center;
+  font-size:50rpx; 
+  color:rgb(255, 255, 255); 
+  background: transparent;
+  transform:translate(-50%, -50%) scale(1);
+  -webkit-transform:translate(-50%, -50%) scale(1);
+}
+.submit{
+  background: var(--themeColor);
+  position: fixed;
+  border-radius: 50%;
+  z-index: 10;
+  top:80rpx;
+  right: 30rpx;
+  box-shadow: 0 0 20rpx rgba(180, 201, 247, 0.8);
+}
+.btn_goto{
+  background: var(--themeColor);
+  font-size: 16rpx;
+  color: #fff;
+}
+.btn_finish{
+  background: var(--highlightColor);
+  font-size: 26rpx;
+  color: #fff;
+  position: relative;
+  bottom:-20rpx;
+}
+.kong{
+  margin-top:20rpx;
 }

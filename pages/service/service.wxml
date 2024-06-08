@@ -6,20 +6,26 @@
       <text style="font-size: 18rpx ; color: #000000">(切换)</text>
     </view>
   </picker>
+  
   <view>剩余可用容量:{{ remainSize }}GB,已选择{{ selectGameCount }}个</view>
   <text style="font-size: 20rpx; color: #3DACF7">(已预留10g空间用于安装游戏及基础工具文件)</text>
+</view>
+ <view class="submit">
+  <view class="btn">
+  <button size="mini" class="btn_goto" bindtap="onClickGoTo">提交</button>
+  </view>
 </view>
 <view class="page_game_list">
       <view class="game_title">游戏清单</view>
       <view>
         <view class="game_row_item" wx:for="{{ csvData }}" wx:key="id">
-          <checkbox checked="{{ item.check }}" bindtap="onClickGameItem" data-id="{{ item.id }}" />
+          <checkbox checked="{{ item.checked }}" bindtap="onClickGameItem" data-id="{{ item.id }}" />
           <view class="game_row_name">{{item.name}}</view>
         </view>
       </view>
 </view>
-<view class="button">
-  <button class="btn_finish" bindtap="onClickFinish">完成</button>
+ <view class="button">
+  <button size="default" class="btn_finish" bindtap="onClickFinish">提交</button>
 </view>
 <page-container 
   show="{{showPage}}"

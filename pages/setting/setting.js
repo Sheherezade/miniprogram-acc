@@ -6,7 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    version: 0
   },
 
   onClickClearCache(){
@@ -33,7 +33,13 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-
+    wx.getStorage({
+      key: 'version',
+      success: res => {
+        this.setData({
+          version: res.data
+        })}
+    });
   },
 
   /**

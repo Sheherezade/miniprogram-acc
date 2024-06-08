@@ -2,6 +2,9 @@
 <!-- 歌曲 -->
 <view class="ListContainer">
   <scroll-view scroll-y="true" class="listScroll">
+      <view class="full">
+        <text>版本号: {{version}}</text>
+      </view>
       <view class="tab" bindtap="onClickClearCache">
         <text>清理缓存</text>
       </view>

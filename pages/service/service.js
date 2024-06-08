@@ -1,4 +1,4 @@
-import PubSub from 'pubsub-js';
+import PubSub, { version } from 'pubsub-js';
 let isSend = false;//函数节流使用
 Page({
 
@@ -7,11 +7,11 @@ Page({
    */
   data: {
     sizeInfo:[
-      { value: 47, des:'64g内存卡' },
-      { value: 106, des:'128g内存卡' },
-      { value: 220, des:'256g(包含该目录所有已汉化游戏)'}
+      { value: 47, des:'64g内存卡', limit: -1},
+      { value: 106, des:'128g内存卡', limit: -1 },
+      { value: 220, des:'256g(包含该目录所有已汉化游戏)', limit: 250}
     ],
-    currentSelectSizeIdx: 0,
+    currentSelectSizeIdx: 0,//第几个
     currentSelectSize: 0,
     currentTotalSize:0,
     remainSize:0,
@@ -21,8 +21,10 @@ Page({
     clientName: "",
     selectGameIds: [],
     showPage: false,
-    name: ''
+    name: '',
+    version:0,
   },
+
 
   // 初始化id2sizeMap
   initSizeMap(){
@@ -66,7 +68,7 @@ Page({
           encoding: 'utf8',
           success: res => {
             const data = res.data;
-            console.log('文件内容：', data);
+            console.log('下载文件内容：', data);
 
             const csv = require('papaparse');
             const result = csv.parse(data, {skipEmptyLines:true}).data;
@@ -105,6 +107,20 @@ Page({
         console.error('下载失败', err);
       }
     })
+  },
+
+  onClickGoTo()
+  {
+    const windowHeight = wx.getSystemInfoSync().windowHeight;
+
+    // 滚动到底部
+    wx.createSelectorQuery().selectViewport().scrollOffset().exec(function(res) {
+      const scrollHeight = res[0].scrollHeight;
+      wx.pageScrollTo({
+        scrollTop: scrollHeight - windowHeight,
+        duration: 500 // 滚动动画时长
+      });
+    });
   },
 
   // 发送游戏清单
@@ -176,20 +192,43 @@ Page({
   // 选择一个游戏事件
   onClickGameItem(e){
     let { id } = e.currentTarget.dataset;//这里可以知道被改变的复选框的index
-    let { selectGameIds,selectGameCount } = this.data;
+    let { csvData,selectGameIds,selectGameCount } = this.data;
+    const csv_idx = csvData.findIndex(obj => obj.id === id);
+
     if(selectGameIds.includes(id))
     {
       const idx = selectGameIds.indexOf(id);
       selectGameIds.splice(idx, 1);
       selectGameCount--;
+      csvData[csv_idx].checked = false;
     }
     else{
+      const idx = this.data.currentSelectSizeIdx;
+      const limit = this.data.sizeInfo[idx].limit;
+      const value = this.data.sizeInfo[idx].value;
+      if(limit > 0 && selectGameCount >= limit)
+      {
+        csvData[csv_idx].checked = false;
+        this.showToast('不可超过' + limit  +'个游戏')
+        this.setData({csvData});
+        return;
+      }
+
+      if(!this.calcuSize())
+      {
+        csvData[csv_idx].checked = false;
+        this.setData({csvData});
+        return;
+      }
+  
       selectGameIds.push(id);
       selectGameCount++;
+      csvData[csv_idx].checked = true;
     }
     this.setData({
       selectGameIds,
-      selectGameCount
+      selectGameCount,
+      csvData
     })
     this.calcuSize();
     this.calcuRemainSize();
@@ -238,30 +277,7 @@ Page({
       duration: 2000
     })
   },
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad(options) {
-    console.log("到服务页面了");
-    // 从本地读取 csv 数据
-    wx.getStorage({
-      key: 'csvData',
-      success: res => {
-        const csvData = res.data;
-        console.log('数据读取成功', csvData);
-
-        this.setData({
-          csvData: csvData
-        }, function() {
-          this.initSizeMap();
-        });
-      },
-      fail: err => {
-        this.startDownload();
-      }
-    });
-    this.updateSelectSize();
-  },
+  
 
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -319,6 +335,98 @@ Page({
     return {
       title:"漓墨白的未白镇"
     }
+  },
+
+
+
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad(options) {
+    this.download();
+    this.updateSelectSize();
+  },
+
+  download()
+  {
+    // 本地有版本号就检测一下版本号，没有的话就直接判断csv的存在逻辑
+    wx.getStorage({
+      key: 'version',
+      success: res => {
+        this.checkVersion(res.data);
+      },
+      fail: err => {
+        this.checkDownloadCsv();
+        wx.cloud.callFunction({
+          name: 'getVersion', // 云函数的名称
+          success: res => {
+            this.saveVersion(res.result.content);
+          },
+          fail: err => {
+            console.error('云函数调用失败', err)
+          }
+        })
+      }
+    });
+  },
+
+  checkDownloadCsv()
+  {
+    wx.getStorage({
+      key: 'csvData',
+      success: res => {
+        const csvData = res.data;
+        console.log('数据读取成功', csvData);
+
+        this.setData({
+          csvData: csvData
+        }, function() {
+          this.initSizeMap();
+        });
+      },
+      fail: err => {
+        this.startDownload();
+      }
+    });
+  },
+
+  saveVersion(version)
+  {
+    wx.setStorage({
+      key: 'version',
+      data: version,
+      success: () => {
+        console.log('版本存储成功',version);
+      },
+      fail: err => {
+        console.error('版本存储失败', err);
+      }
+    });
+  },
+
+  checkVersion(local_version)
+  {
+    console.log('开始校验版本')
+    wx.cloud.callFunction({
+      name: 'getVersion', // 云函数的名称
+      success: res => {
+        console.log('服务器版本',res.result.content)
+        console.log('本地版本',local_version)
+        // 远端版本更新 直接下载
+        if(res.result.content > local_version)
+        {
+          console.log('远端版本更新，开始下载')
+          this.startDownload();
+          this.saveVersion(res.result.content);
+        }
+        else{
+          this.checkDownloadCsv();
+        }
+      },
+      fail: err => {
+        console.error('云函数调用失败', err)
+      }
+    })
   }
 })
 
@@ -328,5 +436,6 @@ class CsvRow {
     this.name = name;
     this.size = size;
     this.sizeInfo = sizeInfo;
+    this.checked = false;
   }
 }
