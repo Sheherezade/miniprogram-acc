@@ -172,7 +172,8 @@ Page({
         name,
         game_list : selectGameIds.join(','),
         time,
-        size: this.data.currentSelectSizeIdx
+        size: this.data.currentSelectSizeIdx,
+        total_size : this.data.currentTotalSize
       }
     })
     .then(res => {
