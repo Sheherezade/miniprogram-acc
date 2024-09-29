@@ -9,7 +9,7 @@ Page({
     sizeInfo:[
       { value: 47, des:'64g内存卡', limit: -1},
       { value: 106, des:'128g内存卡', limit: -1 },
-      { value: 220, des:'256g(包含该目录所有已汉化游戏)', limit: 250}
+      { value: 220, des:'256g(包含该目录所有已汉化游戏)', limit: 260}
     ],
     currentSelectSizeIdx: 0,//第几个
     currentSelectSize: 0,
