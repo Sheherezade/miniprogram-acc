@@ -1,15 +1,64 @@
-.order_item{
+.listScroll {
+  height: 100vh;  /* 确保滚动区域占满整个屏幕高度 */
+  overflow-y: auto;  /* 启用垂直滚动 */
+}
+
+.order_item {
+  margin-bottom: 20px;  /* 每个订单项之间的间隔 */
+  padding: 15px;
+  background-color: #fff;
+  border-radius: 8px;
+  border: 1px solid #f0f0f0;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.order_info {
   display: flex;
-  flex-flow: column;
-  border: 1rpx solid #eee;
-  padding: 0 20rpx 50rpx 20rpx ;
+  flex-wrap: wrap;  /* 允许换行 */
+  gap: 10px;  /* 为项之间添加间距 */
 }
-.order_user_name{
-  word-break: break-all;
+
+.order_user_name, .order_size_info, .order_usage, .order_time
+, .order_game_list_length  {
+  font-size: 14px;
+  flex: 1 1 100%;  /* 确保每个项目按需求换行并占满空间 */
+  white-space: normal;  /* 允许换行 */
+  word-wrap: break-word;  /* 超过容器时换行 */
+  word-break: break-word;  /* 强制长单词换行 */
 }
-.order_user_time{
-  
+
+.order_user_name {
+  font-weight: bold;
 }
-.order_game_list{
-  word-break: break-all;
+
+.order_size_info, .order_usage, .order_time ,.order_game_list_length  {
+  color: #666;
+}
+
+.order_game_list {
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid #f0f0f0;
+}
+
+.game_list_text {
+  white-space: normal;  /* 允许换行 */
+  word-wrap: break-word;  /* 长单词自动换行 */
+  word-break: break-all;  /* 强制换行 */
+  margin-bottom: 10px;
+}
+
+.toggle_button {
+  background-color: #007acc;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+.toggle_button:active {
+  background-color: #005f99;
 }

@@ -1,12 +1,23 @@
-<!--pages/order/order.wxml-->
 <view>
   <scroll-view scroll-y="true" class="listScroll">
-  <view class="order_item" wx:for="{{ order_list }}" wx:key="id">
-    <text	user-select="true" class="order_user_name">{{item.name}}</text>
-    <text	user-select="true" class="order_user_name">{{size_info[item.size]}}</text>
-    <text	user-select="true" class="order_user_name">已使用{{item.total_size}}MB</text>
-    <text	user-select="true" class="order_user_time">{{item.time}}</text>
-    <text user-select="true" class="order_game_list">{{item.game_list}}</text>
-  </view>
+    <view class="order_item" wx:for="{{ order_list }}" wx:key="index">
+      <view class="order_info">
+        <text user-select="true" class="order_user_name">{{item.name}}</text>
+        <text user-select="true" class="order_size_info">{{size_info[item.size]}}</text>
+        <text user-select="true" class="order_usage">已使用{{item.total_size}}GB</text>
+        <text user-select="true" class="order_game_list_length ">游戏个数：{{item.game_list_length }}</text>
+        <text user-select="true" class="order_time">{{item.time}}</text>
+      </view>
+
+      <!-- 显示或隐藏 game_list -->
+      <view wx:if="{{item.showGameList}}" class="order_game_list">
+        <text user-select="true" class="game_list_text">{{item.game_list}}</text>
+      </view>
+
+      <!-- 展开/收起按钮 -->
+      <button class="toggle_button" bindtap="toggleGameList" data-index="{{index}}">
+        {{item.showGameList ? '收起' : '展开'}}
+      </button>
+    </view>
   </scroll-view>
 </view>

@@ -20,9 +20,9 @@
     </view>
     <view class="navItem">
       <view class="tabContainer">
-        <text class="acc acc-zaixianjiaocheng" style="width: 60rpx; height: 60rpx" bind:tap="onClickLock"></text>
+        <text class="acc acc-zaixianjiaocheng" style="width: 60rpx; height: 60rpx" bind:tap="onClickRecord"></text>
       </view>
-      <text>教程指引</text>
+      <text>记录查询</text>
     </view>
     <view class="navItem">
       <view class="tabContainer">

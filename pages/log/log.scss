@@ -1,7 +1,58 @@
-/* pages/log/log.wxss */
-.log_content{
-  display: flex;
-  flex-flow: column;
-  border: 3rpx solid #eee;
-  padding: 20rpx 20rpx 50rpx 20rpx ;
+/* 页面的背景和整体样式 */
+.log_page {
+  background-color: #f5f5f5; /* 背景色 */
+  padding: 20px;
+  min-height: 100vh; /* 确保页面至少占满屏幕 */
+}
+
+/* 每条日志的容器 */
+.log_content {
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  margin-bottom: 15px;
+}
+
+/* 时间显示样式 */
+.log_time {
+  font-size: 16px;
+  color: #666666;
+  margin-bottom: 8px;
+  font-weight: bold;
+  display: block;
+}
+
+/* 更新标题样式 */
+.log_title {
+  font-size: 18px;
+  color: #333333;
+  margin-bottom: 10px;
+  font-weight: bold;
+  display: block;
+}
+
+/* 更新内容的每条日志样式 */
+.log_info {
+  font-size: 16px;
+  color: #444444;
+  line-height: 1.6; /* 增加行高，提升可读性 */
+  margin-bottom: 8px;
+  padding-left: 20px; /* 左侧缩进，让条目更整齐 */
+  display: block;
+}
+
+/* 最后一条日志内容无下边距 */
+.log_info:last-child {
+  margin-bottom: 0;
+}
+
+/* 美化最后的 footer */
+acc-footer {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 14px;
+  color: #999999;
+  padding-top: 20px;
+  border-top: 1px solid #e5e5e5;
 }

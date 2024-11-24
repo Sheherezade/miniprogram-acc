@@ -9,7 +9,7 @@ Page({
     sizeInfo:[
       { value: 47, des:'64g内存卡', limit: -1},
       { value: 106, des:'128g内存卡', limit: -1 },
-      { value: 220, des:'256g(包含该目录所有已汉化游戏)', limit: 260}
+      { value: 220, des:'256g(包含该目录所有已汉化游戏)', limit: 270}
     ],
     currentSelectSizeIdx: 0,//第几个
     currentSelectSize: 0,
@@ -112,12 +112,15 @@ Page({
   onClickGoTo()
   {
     const windowHeight = wx.getSystemInfoSync().windowHeight;
-
+    
     // 滚动到底部
     wx.createSelectorQuery().selectViewport().scrollOffset().exec(function(res) {
-      const scrollHeight = res[0].scrollHeight;
+      const scrollHeight = res[0].scrollHeight; // 获取内容的总高度
+      const scrollTop = scrollHeight - windowHeight; // 目标滚动位置
+
+      // 滚动到底部
       wx.pageScrollTo({
-        scrollTop: scrollHeight - windowHeight,
+        scrollTop: scrollTop,
         duration: 500 // 滚动动画时长
       });
     });

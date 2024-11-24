@@ -1,0 +1,78 @@
+.container {
+  padding: 20px;
+  background-color: #f9f9f9; // 为整体页面增加背景色，便于视觉分层
+}
+
+.header {
+  display: flex;
+  margin-bottom: 20px;
+  align-items: flex-start; // 保证内容从顶部左对齐
+}
+
+.input {
+  flex: 1;
+  height: 40px;
+  margin-right: 10px;
+  border: 1px solid #ccc;
+  padding: 0 10px;
+  border-radius: 5px;
+  text-align: left; // 输入框文本左对齐
+  font-size: 14px;
+  transition: border-color 0.3s;
+
+  &:focus {
+    border-color: #007acc;
+    outline: none;
+  }
+}
+
+.button {
+  height: 40px;
+  line-height: 40px;
+  background-color: #007acc;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 0 15px;
+  font-size: 14px;
+  cursor: pointer;
+  text-align: center; // 确保按钮文本始终居中
+  transition: background-color 0.3s;
+
+  &:hover {
+    background-color: #005f99;
+  }
+}
+
+.result {
+  margin-top: 20px;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #333;
+  text-align: left; // 整体结果区域左对齐
+
+  .result-item {
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+    border-bottom: 1px dashed #ccc;
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    .name {
+      font-weight: bold;
+      color: #007acc;
+    }
+
+    .time {
+      font-size: 10px;
+    }
+
+    .array-item {
+      margin-left: 10px; // 为数组项增加缩进
+      color: #555;
+      font-size: 14px;
+    }
+  }
+}

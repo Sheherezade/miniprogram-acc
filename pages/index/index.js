@@ -29,6 +29,13 @@ Page({
     });
   },
 
+  onClickRecord()
+  {
+    wx.navigateTo({
+      url: '/pages/record/record',
+    });
+  },
+
   onClickLock(){
     this.showToast('暂未开放');
   },

@@ -1,5 +1,3 @@
-<!--pages/setting.wxml-->
-<!-- 歌曲 -->
 <view class="ListContainer">
   <scroll-view scroll-y="true" class="listScroll">
       <view class="full">

@@ -1,0 +1,27 @@
+<view class="container">
+  <view class="header">
+    <input 
+      class="input" 
+      placeholder="请输入昵称" 
+      bindinput="onInput" 
+      value="{{nickname}}"
+    />
+    <button class="button" bindtap="onQuery">查询</button>
+  </view>
+
+  <view class="result">
+    <view wx:if="{{results.length > 0}}">
+      <text>查询结果：</text>
+      <view wx:for="{{results}}" wx:key="id" class="result-item">
+        <text class="name">{{item.name}}</text>
+        <text class="time">({{item.time}})</text>
+        <view class="array">
+          <view wx:for="{{item.game_list}}" wx:key="index" class="array-item">
+            <text>{{item}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+    <text wx:else>暂无查询结果</text>
+  </view>
+</view>

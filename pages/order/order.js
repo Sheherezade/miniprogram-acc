@@ -18,7 +18,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-        // 小程序前端代码
+
     wx.cloud.callFunction({
       name: 'getCollectionData',
       success: (res) => {
@@ -35,15 +35,34 @@ Page({
           console.log(res.result)
         }
         else{
-          res.result.data.forEach(item=>{
+          res.result.data.map(item=>{
             item.time=formatTime(item.time,3)
+             // 确保 total_size 是数字，然后保留两位小数
+            item.total_size = (Number(item.total_size) / 1024 || 0).toFixed(2);
           })
           this.setData({
-            order_list: res.result.data
-          })
+            order_list: res.result.data.map(item => {
+              // 将字符串分割为数组并计算长度
+              item.game_list_length = item.game_list.split(',').length;
+              return item;
+            })
+          });
         }
       },
     })
+  },
+
+  toggleGameList(e) {
+    const index = e.currentTarget.dataset.index;  // 获取当前点击项的索引
+    const orderList = this.data.order_list;
+
+    // 直接修改对应项的 showGameList
+    orderList[index].showGameList = !orderList[index].showGameList;
+
+    // 更新 order_list 数据
+    this.setData({
+      order_list: orderList  // 更新整个 order_list
+    });
   },
 
   /**

@@ -14,7 +14,10 @@ exports.main = async (event, context) => {
 
   if (adminInfo.data.length > 0) {
     const collection = db.collection('user_game_list')
-    const data = await collection.get()
+    const data = await collection
+    .orderBy('time', 'desc')  // 按照 time 字段降序排序
+    .limit(50)                // 设置最多返回 50 条记录
+    .get()
     return data
     }
     else {
