@@ -1,8 +1,42 @@
-/* pages/service.wxss */
+.search-bar {
+  position: fixed;
+  top: 180rpx; /* 放在 section 下方 */
+  left: 0;
+  right: 0;
+  z-index: 3;
+  background-color: #fff;
+  padding: 10rpx 20rpx;
+  display: flex;
+  align-items: center;
+  gap: 10rpx; /* 输入框和按钮的间距 */
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.1);
+}
+
+.search-input {
+  width: calc(100% - 10rpx); /* 保留按钮空间 */
+  height: 60rpx;
+  border: 1rpx solid #ccc;
+  border-radius: 10rpx;
+  padding: 0 10rpx;
+  font-size: 26rpx;
+}
+.search-button {
+  height: 60rpx;
+  width: 80rpx; /* 调整为更小的宽度 */
+  background-color: var(--themeColor);
+  color: #fff;
+  border: none;
+  border-radius: 10rpx;
+  font-size: 26rpx;
+  text-align: center;  /* 水平居中 */
+  line-height: 30rpx;  /* 垂直居中 */
+}
+
+
 .section .picker
 {
   margin: 20rpx 0;
-  background: #3DACF7;
+  background: var(--themeColor);
   text-align: center;
   color:#fff;
   font-size: 26rpx;
@@ -18,8 +52,11 @@
 }
 .page_game_list{
   position: relative;
-  margin-top: 180rpx;
+  margin-top: 260rpx;
+  height: calc(100vh - 180rpx); /* 减去搜索框高度 */
+  overflow: hidden;
 }
+
 .game_title{
   background: #3DACF7;
   margin: 30rpx 0;
@@ -42,23 +79,50 @@
   position: relative;
   margin-top: 50rpx;
 }
-.name_input{
-  width: 100%;
-  min-height: 150rpx;
+/* 容器样式 */
+.client_name {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: rgba(0,0,0,0.2);
+  height: 100%;
+  padding: 16px;
+  background-color: #ececec;
+  border-radius: 12px 12px 0 0; /* 圆角顶部 */
 }
-.btn_commit{
-  background: #3DACF7;
-  color:#fff;
-  font-size: 26rpx;
+
+/* 输入框样式 */
+.name_input {
+  width: 80%; /* 输入框宽度 */
+  padding: 10px;
+  font-size: 16px;
+  border: 2px solid var(--themeColor);
+  border-radius: 8px;
+  text-align: center;
+  outline: none; /* 移除默认高亮 */
+  margin-bottom: 20px;
 }
-.client_name button{
-  margin-top: 50rpx;
-  background: #3DACF7;
+
+/* 提交按钮样式 */
+.btn_commit {
+  width: 80%;
+  padding: 10px;
+  background-color: var(--themeColor); /* 蓝色按钮 */
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
 }
+
+/* 提交按钮悬停样式 */
+.btn_commit:hover {
+  background-color: var(--themeColor);
+}
+
 /* 未选中的背景样式 */
 checkbox .wx-checkbox-input{
   width: 40rpx; 
@@ -85,7 +149,7 @@ checkbox .wx-checkbox-input.wx-checkbox-input-checked::before{
   -webkit-transform:translate(-50%, -50%) scale(1);
 }
 .submit{
-  background: var(--themeColor);
+  background: var(--highlightColor);
   position: fixed;
   border-radius: 50%;
   z-index: 10;
@@ -94,7 +158,7 @@ checkbox .wx-checkbox-input.wx-checkbox-input-checked::before{
   box-shadow: 0 0 20rpx rgba(180, 201, 247, 0.8);
 }
 .btn_goto{
-  background: var(--themeColor);
+  background: var(--highlightColor);
   font-size: 16rpx;
   color: #fff;
 }

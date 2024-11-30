@@ -1,29 +1,14 @@
 <view class="log_page">
-  <view class="log_content">
-    <text class="log_time">2024-11-24</text>
-    <text class="log_title">更新内容:</text>
-    <text class="log_info">1.新增查询历史信息功能</text>
-    <text class="log_info">2.部分页面布局优化</text>        
-    <text class="log_info">3.游戏上限增加</text>
-  </view>
-  
-  <view class="log_content">
-    <text class="log_time">2024-6-8</text>
-    <text class="log_title">更新内容:</text>
-    <text class="log_info">1.优化3ds游戏目录</text>
-    <text class="log_info">2.增加非中文游戏</text>        
-    <text class="log_info">3.新增版本号</text>
-    <text class="log_info">4.游戏选择优化</text>
-  </view>
-
-  <view class="log_content">
-    <text class="log_time">2024-2-25</text>
-    <text class="log_title">更新内容:</text>
-    <text class="log_info">1.新增256g内存卡选择</text>
-    <text class="log_info">2.新增上传时间、上传类型</text>        
-    <text class="log_info">3.新增客服对话入口</text>
-    <text class="log_info">4.新增转发功能</text>   
-  </view>
-
+  <view class="log_page">
+  <block wx:for="{{logs}}" wx:key="index">
+    <view class="log_content">
+      <text class="log_time">{{item.time}}</text>
+      <text class="log_title">更新内容:</text>
+      <block wx:for="{{item.log}}" wx:key="index">
+        <text class="log_info">{{index + 1}}. {{item}}</text>
+      </block>
+    </view>
+  </block>
+</view>
 </view>
 <acc-footer/>

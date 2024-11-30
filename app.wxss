@@ -13,6 +13,7 @@ page {
   --globalBgColor2: #f6f7f8;
   --globalBgColor3: #ffffff;
   --highlightColor: #fd6529;
+  --selectedColor: #fffd9d;
 }
 
 .container {

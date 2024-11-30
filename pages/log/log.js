@@ -1,18 +1,47 @@
-// pages/log/log.js
+// 获取云数据库实例
+const db = wx.cloud.database();
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    logs: []  // 用于存储从云开发拉取的更新日志
+  },
 
+  // 获取更新日志数据
+  fetchUpdateLogs: function() {
+    db.collection('app_log')
+    .where({
+      enable: true  // 只获取 enable 为 true 的记录
+    })
+    .orderBy('time', 'desc')
+    .get({
+      success: res => {
+        // 对拉取到的数据按时间进行排序
+        const logs = res.data;
+        // 将时间字符串转换为 Date 对象并进行排序
+        logs.sort((a, b) => {
+          const dateA = new Date(a.time);  // 将时间字符串转换为 Date 对象
+          const dateB = new Date(b.time);
+          
+          return dateB - dateA;  // 降序排序
+        });
+        this.setData({
+          logs: res.data  // 将拉取到的日志数据设置到页面数据中
+        });
+      },
+      fail: err => {
+        console.error('获取更新日志失败', err);
+      }
+    });
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-
+    this.fetchUpdateLogs();
   },
 
   /**

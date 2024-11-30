@@ -23,6 +23,10 @@ Page({
     showPage: false,
     name: '',
     version:0,
+    searchKeyword: '',  // 存储用户输入的搜索词
+    currentSearchIndex: 0,  // 当前匹配项的索引，确保从 0 开始
+    matchingGames: [],  // 存储所有匹配的游戏
+    currentScrollId: '',     // 当前滚动到的游戏项 ID
   },
 
 
@@ -111,18 +115,9 @@ Page({
 
   onClickGoTo()
   {
-    const windowHeight = wx.getSystemInfoSync().windowHeight;
-    
-    // 滚动到底部
-    wx.createSelectorQuery().selectViewport().scrollOffset().exec(function(res) {
-      const scrollHeight = res[0].scrollHeight; // 获取内容的总高度
-      const scrollTop = scrollHeight - windowHeight; // 目标滚动位置
-
-      // 滚动到底部
-      wx.pageScrollTo({
-        scrollTop: scrollTop,
-        duration: 500 // 滚动动画时长
-      });
+    let { csvData } = this.data;
+    this.setData({
+      currentScrollId: csvData[csvData.length - 1].id // 设置滚动目标的 id
     });
   },
 
@@ -431,7 +426,51 @@ Page({
         console.error('云函数调用失败', err)
       }
     })
+  },
+
+ // 监听输入框内容变化
+ onSearchInput: function(event) {
+  this.setData({
+    searchKeyword: event.detail.value,
+    currentSearchIndex : 0,
+    currentScrollId: ''
+  });
+},
+
+// 点击搜索按钮
+onSearch: function() {
+  const { searchKeyword, csvData, currentSearchIndex } = this.data;
+
+  if (!searchKeyword) {
+    wx.showToast({
+      title: '请输入搜索关键词',
+      icon: 'none'
+    });
+    return;
   }
+
+  // 筛选匹配的游戏项
+  const matchingGames = csvData.filter(item => item.name.includes(searchKeyword));
+
+  if (matchingGames.length === 0) {
+    wx.showToast({
+      title: '没有找到匹配的游戏',
+      icon: 'none'
+    });
+    return;
+  }
+
+  // 当前索引超出匹配项时，重置为 0
+  const newSearchIndex = currentSearchIndex >= matchingGames.length ? 0 : currentSearchIndex;
+
+  // 获取当前匹配的游戏项
+  const targetGame = matchingGames[newSearchIndex];
+  this.setData({
+    matchingGames,
+    currentSearchIndex: (newSearchIndex + 1) % matchingGames.length, // 更新为下一个匹配项索引
+    currentScrollId: targetGame.id // 设置滚动目标的 id
+  });
+}
 })
 
 class CsvRow {
@@ -443,3 +482,4 @@ class CsvRow {
     this.checked = false;
   }
 }
+

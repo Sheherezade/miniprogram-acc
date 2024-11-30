@@ -1,3 +1,10 @@
+<view class="search-bar">
+  <input class="search-input" 
+         placeholder="搜索游戏" 
+         bindinput="onSearchInput" />
+  <button class="search-button" 
+          bindtap="onSearch">搜索</button>
+</view>
 <view class="section">
   <picker bindchange="bindPickerChange" value="{{index}}" range="{{sizeInfo}}" range-key="des">
     <view class="picker">
@@ -8,42 +15,68 @@
   </picker>
   
   <view>剩余可用容量:{{ remainSize }}GB,已选择{{ selectGameCount }}个</view>
-  <text style="font-size: 20rpx; color: #3DACF7">(已预留10g空间用于安装游戏及基础工具文件)</text>
+  <text style="font-size: 20rpx; color: var(--themeColor);">(已预留10g空间用于安装游戏及基础工具文件)</text>
 </view>
  <view class="submit">
   <view class="btn">
-  <button size="mini" class="btn_goto" bindtap="onClickGoTo">提交</button>
+  <button size="mini" class="btn_goto" bindtap="onClickFinish">提交</button>
   </view>
 </view>
-<view class="page_game_list">
-      <view class="game_title">游戏清单</view>
-      <view>
-        <view class="game_row_item" wx:for="{{ csvData }}" wx:key="id">
-          <checkbox checked="{{ item.checked }}" bindtap="onClickGameItem" data-id="{{ item.id }}" />
-          <view class="game_row_name">{{item.name}}</view>
-        </view>
-      </view>
-</view>
- <view class="button">
-  <button size="default" class="btn_finish" bindtap="onClickFinish">提交</button>
-</view>
+<scroll-view 
+  scroll-y 
+  class="page_game_list" 
+  scroll-into-view="{{currentScrollId}}" 
+  scroll-with-animation="true"
+>
+  <view class="game_title">游戏清单</view>
+  <view>
+    <view 
+      id="{{item.id}}" 
+      class="game_row_item" 
+      wx:for="{{csvData}}" 
+      wx:key="id"
+      style="{{item.id == currentScrollId ? 'background-color: var(--selectedColor);' : ''}}"
+    >
+      <checkbox 
+        checked="{{item.checked}}" 
+        bindtap="onClickGameItem" 
+        data-id="{{item.id}}" 
+      />
+      <view class="game_row_name">{{item.name}}</view>
+    </view>
+  </view>
+
+</scroll-view>
+
+
 <page-container 
-  show="{{showPage}}"
-  round="true"
-  overlay="true"
-  position="bottom"
-  close-on-slide-down="false"
-  custom-style="height: 25%"
-  overlay-style="background-color: rgba(0, 0, 0, 0.7)"
+  show="{{showPage}}" 
+  round="true" 
+  overlay="true" 
+  position="bottom" 
+  close-on-slide-down="false" 
+  custom-style="height: 25%;" 
+  overlay-style="background-color: rgba(0, 0, 0, 0.7);" 
   bindclickoverlay="onClosePage"
 >
+  <!-- 主容器 -->
   <view class="client_name">
-    <input class="name_input" 
+    <!-- 输入框 -->
+    <input 
+      class="name_input" 
       placeholder="(下单平台昵称)" 
-      maxlength="20"
-      bindblur="onBindBlur"
-      style="text-align: center;" />
-    <button class="btn_commit" bindtap="onClickSend">提交</button>
+      maxlength="20" 
+      bindblur="onBindBlur" 
+      style="text-align: center;" 
+    />
+    <!-- 提交按钮 -->
+    <button 
+      class="btn_commit" 
+      bindtap="onClickSend"
+    >
+      提交
+    </button>
   </view>
 </page-container>
+
 <acc-footer/>
