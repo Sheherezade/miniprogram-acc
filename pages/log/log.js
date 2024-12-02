@@ -22,9 +22,9 @@ Page({
         const logs = res.data;
         // 将时间字符串转换为 Date 对象并进行排序
         logs.sort((a, b) => {
-          const dateA = new Date(a.time);  // 将时间字符串转换为 Date 对象
-          const dateB = new Date(b.time);
-          
+          const dateA = new Date(a.time.replace(/-/g, '/'));  // 将 "-" 替换为 "/"
+          const dateB = new Date(b.time.replace(/-/g, '/'));
+     
           return dateB - dateA;  // 降序排序
         });
         this.setData({

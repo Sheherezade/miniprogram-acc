@@ -50,11 +50,11 @@
   z-index: 2;
   background-color: #fff;
 }
-.page_game_list{
+.page_game_list {
   position: relative;
   margin-top: 260rpx;
-  height: calc(100vh - 180rpx); /* 减去搜索框高度 */
-  overflow: hidden;
+  height: calc(100vh - 260rpx);
+  overflow: auto; /* 确保 scroll-view 能正常滚动 */
 }
 
 .game_title{

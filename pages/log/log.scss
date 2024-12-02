@@ -16,7 +16,7 @@
 
 /* 时间显示样式 */
 .log_time {
-  font-size: 16px;
+  font-size: 14px;
   color: #666666;
   margin-bottom: 8px;
   font-weight: bold;
@@ -25,7 +25,7 @@
 
 /* 更新标题样式 */
 .log_title {
-  font-size: 18px;
+  font-size: 14px;
   color: #333333;
   margin-bottom: 10px;
   font-weight: bold;
@@ -34,9 +34,8 @@
 
 /* 更新内容的每条日志样式 */
 .log_info {
-  font-size: 16px;
+  font-size: 12px;
   color: #444444;
-  line-height: 1.6; /* 增加行高，提升可读性 */
   margin-bottom: 8px;
   padding-left: 20px; /* 左侧缩进，让条目更整齐 */
   display: block;
