@@ -6,7 +6,7 @@ Page({
    */
   data: {
     gameName: '',
-    gameImage: '',
+    gameImages: [],
     gameDescription: '',
   },
 
@@ -17,11 +17,12 @@ Page({
       data: { gameId },
       success: res => {
         if (res.result.success) {
-          const { gameImage, gameDescription } = res.result;
+          const { gameImages, gameDescription } = res.result;
           this.setData({
-            gameImage,
+            gameImages,
             gameDescription,
           });
+          console.log(gameDescription);
         } else {
           wx.showToast({
             title: res.result.message,

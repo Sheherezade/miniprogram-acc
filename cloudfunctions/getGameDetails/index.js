@@ -16,24 +16,41 @@ exports.main = async (event, context) => {
 
     // 如果查询到数据
     if (res.data.length > 0) {
-      const gameDetail = res.data[0];  // 获取第一个结果（假设 gameId 是唯一的）
+        const info = res.data[0];
       
-      // 拼接云存储路径（根据你的存储路径规则）
-      const gameImageUrl = `cloud://cloud1-2gajjosv8b2840db.636c-cloud1-2gajjosv8b2840db-1317345751/images/game/${gameId}.jpg`;
+        // 构建文件路径，这里假设文件名是 gameId + 序号.jpg
+        const folderPath = `cloud://cloud1-2gajjosv8b2840db.636c-cloud1-2gajjosv8b2840db-1317345751/images/${gameId}/`;  // 你的文件夹路径
 
-      return {
-        success: true,
-        gameImage: gameImageUrl,  // 返回拼接好的图片URL
-        gameDescription: gameDetail.gameDescription
-      };
+        // 假设文件夹内有 5 张图片，文件名是 1.jpg, 2.jpg, ... 5.jpg
+        const filePaths = [];
+        for (let i = 1; i <= 10; i++) {
+          filePaths.push(`${folderPath}${i}.jpg`);  // 拼接每个图片的路径
+        }
+
+        // 使用 wx.cloud.getTempFileURL 获取文件的临时链接
+        const fileUrls = await cloud.getTempFileURL({
+          fileList: filePaths
+        });
+
+        // 过滤掉加载失败的文件
+        const validUrls = fileUrls.fileList
+        .filter(file => !file.error && file.tempFileURL)  // 过滤掉错误和没有 URL 的文件
+        .map(file => file.tempFileURL);  // 获取成功加载的临时文件 URL
+
+        // 返回临时链接
+        return {
+          success: true,
+          gameImages: validUrls,  // 返回图片临时链接
+          gameDescription: info.gameDescription
+        };
     } else {
-
-      const gameImageUrl = `cloud://cloud1-2gajjosv8b2840db.636c-cloud1-2gajjosv8b2840db-1317345751/images/game/default.jpg`;
+      // 如果没有找到游戏详情，返回默认图片和描述
+      const defaultImageUrl = `cloud://cloud1-2gajjosv8b2840db.636c-cloud1-2gajjosv8b2840db-1317345751/images/default.jpg`;
 
       return {
         success: true,
-        gameImage: gameImageUrl,
-        gameDescription:  "漓墨白努力添加中...",
+        gameImages: [defaultImageUrl], // 返回默认图片
+        gameDescription: "漓墨白正在努力添加中..."
       };
     }
   } catch (err) {

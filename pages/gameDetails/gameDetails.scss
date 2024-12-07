@@ -1,28 +1,30 @@
-.game-details {
+/* page-container */
+.page-container {
   padding: 20rpx;
-  background-color: #f5f5f5;
-  border-radius: 12rpx;
-  box-shadow: 0 4rpx 10rpx rgba(0, 0, 0, 0.1);
-  max-width: 700rpx;
-  margin: 0 auto; /* 居中 */
 }
 
-.game-title {
+/* 设置轮播图容器宽高相等，确保是正方形 */
+.swiper {
+  width: 100%;  /* 宽度占满父容器 */
+  height: 100vw;  /* 高度等于屏幕宽度，实现正方形效果 */
+}
+
+/* 轮播图中的图片保持正方形并适应容器 */
+.carousel-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;  /* 保证图片完整显示，不裁剪 */
+}
+
+/* 游戏名字 */
+.game-name {
   font-size: 32rpx;
   font-weight: bold;
-  color: #333;
-  margin-bottom: 20rpx;
-  text-align: center;
+  margin-bottom: 10rpx;
 }
 
+/* 游戏描述 */
 .game-description {
-  font-size: 24rpx;
-  line-height: 1.6;
-  color: #555;
-  margin-bottom: 30rpx;
-  padding: 10rpx;
-  background-color: #fff;
-  border-radius: 8rpx;
-  box-shadow: 0 2rpx 5rpx rgba(0, 0, 0, 0.1);
+  font-size: 28rpx;
+  color: #666;
 }
-
