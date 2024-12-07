@@ -29,9 +29,11 @@
   border-radius: 10rpx;
   font-size: 26rpx;
   text-align: center;  /* 水平居中 */
-  line-height: 30rpx;  /* 垂直居中 */
+  line-height: 20rpx;  /* 垂直居中 */
 }
-
+.search-button:active {
+  transform: scale(0.9);
+}
 
 .section .picker
 {
@@ -64,16 +66,53 @@
   color:#fff;
   font-size: 26rpx;
 }
-.game_row_item{
+.game_row_item {
   display: flex;
   flex-flow: row;
   border: 1rpx solid #eee;
-  padding: 0 20rpx 0 20rpx ;
+  padding: 0 20rpx;
+  align-items: center; /* 垂直居中 */
+  justify-content: space-between; /* 确保文本和按钮分开 */
 }
-.game_row_item .game_row_name{
-  font-size: 30rpx;
+
+.game_row_item .game_row_name {
+  font-size: 26rpx; /* 游戏名字字体大小 */
   padding-bottom: 30rpx;
+  line-height: 36rpx; /* 行高，确保文字垂直居中 */
+  flex-grow: 1; /* 让文本区域占据剩余空间 */
+  padding-right: 10rpx; /* 给文字和按钮之间增加间隔 */
 }
+
+.details-button {
+  min-width: 60rpx; /* 固定最小宽度 */
+  max-width: 70rpx; /* 固定最大宽度 */
+  height: 28rpx; /* 固定高度 */
+  font-size: 14rpx; /* 较小的字体大小 */
+  color: white; /* 白色字体 */
+  background-color: var(--themeColor);
+  border-radius: 14rpx; /* 圆角按钮 */
+  border: none; /* 去掉边框 */
+  display: flex;
+  justify-content: center; /* 水平居中 */
+  align-items: center; /* 垂直居中 */
+  cursor: pointer; /* 鼠标悬停时显示手型 */
+  transition: all 0.2s ease-in-out; /* 按钮的动画效果 */
+  flex-shrink: 0; /* 防止按钮被压缩 */
+  flex-grow: 0; /* 防止按钮伸展 */
+  box-sizing: border-box; /* 包括内边距和边框在内 */
+  white-space: nowrap; /* 防止内容换行影响按钮宽度 */
+}
+
+.details-button:hover {
+  background-color: var(--highlightColor); /* 鼠标悬停时的背景色 */
+}
+
+.details-button:active {
+  background-color: var(--highlightColor); /* 按下时的背景色 */
+  transform: scale(0.95); /* 按下时按钮轻微缩小 */
+}
+
+
 .button{
   top: -30rpx;
   position: relative;
@@ -122,7 +161,6 @@
 .btn_commit:hover {
   background-color: var(--themeColor);
 }
-
 /* 未选中的背景样式 */
 checkbox .wx-checkbox-input{
   width: 40rpx; 

@@ -8,7 +8,10 @@
     "pages/cart/cart",
     "pages/classify/classify",
     "pages/log/log",
-    "pages/record/record"
+    "pages/record/record",
+    "pages/gameDetails/gameDetails",
+    "pages/tutorial/tutorial",
+    "pages/webview/webview"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -40,6 +43,6 @@
   "sitemapLocation": "sitemap.json",
   "lazyCodeLoading": "requiredComponents",
   "usingComponents": {
-    "acc-footer":"components/acc-footer/acc-footer"
+    "acc-footer": "components/acc-footer/acc-footer"
   }
 }

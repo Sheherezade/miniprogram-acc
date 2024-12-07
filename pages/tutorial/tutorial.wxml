@@ -1,0 +1,13 @@
+<view class="tutorial-list">
+  <block wx:for="{{items}}" wx:key="index">
+    <view class="tutorial-item" bindtap="onItemClick" data-url="{{item.url}}">
+      <!-- 标题 -->
+      <text class="tutorial-title">{{item.title}}</text>
+      <!-- 作者和时间 -->
+      <view class="tutorial-meta">
+        <text class="tutorial-author">{{item.author}}</text>
+        <text class="tutorial-date">{{item.date}}</text>
+      </view>
+    </view>
+  </block>
+</view>

@@ -26,9 +26,9 @@
     </view>
     <view class="navItem">
       <view class="tabContainer">
-        <text class="acc acc-Trash" bind:tap="onClickLock"></text>
+        <text class="acc acc-youxi1" style="width: 80rpx; height: 80rpx" bind:tap="onClickTutorial"></text>
       </view>
-      <text>掌机回收</text>
+      <text>教程分享</text>
     </view>
     <view class="navItem">
       <view class="tabContainer">

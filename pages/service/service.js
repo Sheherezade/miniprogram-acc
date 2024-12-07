@@ -142,6 +142,13 @@ Page({
     });
   },
 
+  onClickDetails(e) {
+    const gameId = e.currentTarget.dataset.id; // 获取当前 item 的 ID
+    wx.navigateTo({
+      url: `/pages/gameDetails/gameDetails?id=${gameId}`, // 跳转到详情页
+    });
+  },
+
   onClickSend(){
 
     const { name, selectGameIds } = this.data;

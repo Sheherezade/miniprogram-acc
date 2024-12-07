@@ -1,0 +1,14 @@
+<view class="page-container">
+  <!-- 游戏名字 -->
+  <view class="game-name">{{gameName}}</view>
+  
+  <!-- 游戏图片 -->
+  <view class="game-image">
+    <image src="{{gameImage}}" mode="aspectFit"></image>
+  </view>
+
+  <!-- 游戏介绍 -->
+  <view class="game-description">
+    <rich-text nodes="{{gameDescription}}"></rich-text>
+  </view>
+</view>

@@ -36,6 +36,13 @@ Page({
     });
   },
 
+  onClickTutorial()
+  {
+    wx.navigateTo({
+      url: '/pages/tutorial/tutorial',
+    });
+  },
+
   onClickLock(){
     this.showToast('暂未开放');
   },

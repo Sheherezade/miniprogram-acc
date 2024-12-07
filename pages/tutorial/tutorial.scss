@@ -1,0 +1,57 @@
+/* tutorial-list: 列表容器 */
+.tutorial-list {
+  padding: 20rpx;  /* 设置内边距 */
+}
+
+/* tutorial-item: 每一项容器 */
+.tutorial-item {
+  position: relative;  /* 让作者和时间能够绝对定位 */
+  background: linear-gradient(45deg, var(--themeColor), var(--highlightColor)); /* 初始渐变背景 */
+  background-size: 200% 200%; /* 背景的大小更大，能够创造动画效果 */
+  animation: gradientBackground 2s ease infinite; /* 设置动画 */
+  border-radius: 10rpx;  /* 圆角 */
+  margin-bottom: 20rpx;  /* 每项之间的间距 */
+  padding: 20rpx;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.1);  /* 添加阴影效果 */
+  overflow: hidden;  /* 避免溢出 */
+}
+
+/* 背景渐变动画 */
+@keyframes gradientBackground {
+  0% {
+    background-position: 0% 50%;
+  } 
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* tutorial-title: 标题 */
+.tutorial-title {
+  font-size: 32rpx;  /* 调整标题的大小 */
+  font-weight: bold;  /* 加粗字体 */
+  line-height: 1.4;  /* 行高 */
+  display: block;  /* 确保标题是块级元素 */
+  color: #333;  /* 设置颜色 */
+  margin-bottom: 12rpx;  /* 标题与作者时间的间距 */
+}
+
+/* tutorial-meta: 作者和时间的容器 */
+.tutorial-meta {
+  position: absolute;  /* 绝对定位 */
+  right: 20rpx;  /* 距离右边20rpx */
+  bottom: 10rpx;  /* 距离底部10rpx */
+  font-size: 20rpx;  /* 作者和日期的字体大小变小 */
+  color: rgb(192, 192, 192);  /* 设置浅灰色 */
+}
+
+/* tutorial-author 和 tutorial-date 样式 */
+.tutorial-author,
+.tutorial-date {
+  display: block;  /* 每个文本占一行 */
+  margin-top: 4rpx;  /* 上下间距 */
+  text-align: right;  /* 对齐到右边 */
+}

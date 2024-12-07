@@ -30,5 +30,6 @@
     "tabSize": 2
   },
   "cloudfunctionRoot": "cloudfunctions/",
-  "cloudfunctionTemplateRoot": "cloudfunctionTemplate/"
+  "cloudfunctionTemplateRoot": "cloudfunctionTemplate/",
+  "projectname": "miniprogram-acc"
 }
