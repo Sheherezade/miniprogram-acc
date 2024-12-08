@@ -42,7 +42,11 @@
         bindtap="onClickGameItem" 
         data-id="{{item.id}}" 
       />
-      <view class="game_row_name">{{item.name}}</view>
+      <view class="game_row_name"        
+        bindtap="onClickGameItem" 
+        data-id="{{item.id}}" >
+        {{item.name}}
+        </view>
       <button 
         class="details-button" 
         bindtap="onClickDetails" 
