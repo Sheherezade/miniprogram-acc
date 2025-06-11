@@ -45,7 +45,7 @@
       <view class="game_row_name"        
         bindtap="onClickGameItem" 
         data-id="{{item.id}}" >
-        {{item.name}}
+        <rich-text nodes="{{item.name}}"></rich-text>
         </view>
       <button 
         class="details-button" 
